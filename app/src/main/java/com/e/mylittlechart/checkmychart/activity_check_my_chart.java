@@ -42,9 +42,9 @@ public class activity_check_my_chart extends AppCompatActivity implements MyActi
     }
 
     public void bindingObject(){
-        name = findViewById(R.id.registration_number);
+        name = findViewById(R.id.name);
         registation_number = findViewById(R.id.registration_number);
-        phone_number = findViewById(R.id.registration_number);
+        phone_number = findViewById(R.id.phone_number);
         adress = findViewById(R.id.adress);
         cancel = findViewById(R.id.cancel);
         enter = findViewById(R.id.save);

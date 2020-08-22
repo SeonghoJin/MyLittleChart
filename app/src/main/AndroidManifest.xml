@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.e.mylittlechart">
 
@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".adress.activity_adress"></activity>
+        <activity android:name=".checkdiagnosticinformation.activity_inquiry_diagnose"></activity>
+        <activity android:name=".checkdiagnosticinformation.activity_check_my_diagnostic_information" />
+        <activity android:name=".adress.activity_adress" />
         <activity android:name=".activity_generate_qrcode" />
         <activity android:name=".checkmychart.activity_change_adress" />
         <activity android:name=".checkmychart.activity_change_registration_number" />

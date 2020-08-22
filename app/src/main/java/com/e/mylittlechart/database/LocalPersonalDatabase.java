@@ -12,7 +12,7 @@ public class LocalPersonalDatabase {
     private static SQLiteDatabase db;
     private static final String DATABASENAME = "LocalPersonalDatabase";
     private static final String TABLENAME = "PersonalData";
-    private static final String TAG = "DATABASE";
+    private static final String TAG = "PersonalDATABASE";
 
     public LocalPersonalDatabase(Context context) {
         if(db == null){
@@ -71,8 +71,8 @@ public class LocalPersonalDatabase {
     }
 
     public void setPhoneNumber(String phonenumber){
-        Log.d(TAG, "setPhoneNumber()");
-        db.execSQL(String.format("update %s set phonenumber=%s", TABLENAME, phonenumber));
+        Log.d(TAG, "setPhoneNumber()" );
+        db.execSQL(String.format("update %s set phonenumber='%s'", TABLENAME, phonenumber));
     }
     public String getRegistrationNumber(){
         Log.d(TAG, "getRegistrationNumber()");

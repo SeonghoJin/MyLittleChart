@@ -3,7 +3,6 @@ package com.e.mylittlechart;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.e.mylittlechart.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,15 +11,23 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import com.e.mylittlechart.DiagnoseRecord.DiagnoseRecord;
+import com.e.mylittlechart.DiagnoseRecord.DiagnosisClassification;
+import com.e.mylittlechart.checkdiagnosticinformation.activity_check_my_diagnostic_information;
 import com.e.mylittlechart.checkmychart.activity_check_my_chart;
+import com.e.mylittlechart.database.LocalDiagnoseRecordDatabase;
 import com.e.mylittlechart.database.LocalPersonalDatabase;
+import com.e.mylittlechart.example.MyActivity;
 import com.e.mylittlechart.requestcode.MyRequestCode;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Date;
+
+public class MainActivity extends AppCompatActivity implements MyActivity {
     Button enter_profile;
     Button enter_qrcode_generator;
     Button enter_diagnostic_information;
     LocalPersonalDatabase localPersonalDatabase;
+    LocalDiagnoseRecordDatabase localdiagnoseRecordDatabase;
     Boolean startActivityFlag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         init();
         bindingObject();
         bindingEvent();
+        settings();
     }
 
     private void startLoading(){
@@ -38,18 +46,19 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, MyRequestCode.ACTIVITY_MAIN_SEND);
     }
 
-    private void init(){
+    public void init(){
         localPersonalDatabase = new LocalPersonalDatabase(getApplicationContext());
+        localdiagnoseRecordDatabase = new LocalDiagnoseRecordDatabase(getApplicationContext());
         startActivityFlag = localPersonalDatabase.empty();
     }
 
-    private void bindingObject(){
+    public void bindingObject(){
         enter_profile = findViewById(R.id.enter_profile);
         enter_qrcode_generator = findViewById(R.id.enter_qrcode_generator);
         enter_diagnostic_information = findViewById(R.id.enter_diagnostic_information);
     }
 
-    private void bindingEvent(){
+    public void bindingEvent(){
         enter_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +73,33 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        enter_diagnostic_information.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), activity_check_my_diagnostic_information.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void settings() {
+        final Testable testLocalDiagnoseRecordDatabase = new Testable() {
+            @Override
+            public Testable excute() {
+                if(localdiagnoseRecordDatabase.count() <= 10) {
+                    DiagnoseRecord testDiagnoseRecord = new DiagnoseRecord();
+                    testDiagnoseRecord.setDate("2020/08/22");
+                    testDiagnoseRecord.setDiagnosisclassification(DiagnosisClassification.BEHAVIORAL_CORRECTION_THERAPY);
+                    testDiagnoseRecord.setDisease("우한");
+                    localdiagnoseRecordDatabase.insert(testDiagnoseRecord);
+                    DiagnoseRecord testDiagnoseRecord2 = localdiagnoseRecordDatabase.getData(localdiagnoseRecordDatabase.count() - 1);
+                }
+                return this;
+
+            }
+        }.excute();
+        
     }
 
     private void startAnimation(){

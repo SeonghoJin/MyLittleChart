@@ -52,9 +52,9 @@ public class activity_first_enter_personal_information extends AppCompatActivity
     }
 
     private void bindingObject(){
-        name = findViewById(R.id.registration_number);
+        name = findViewById(R.id.name);
         registration_number = findViewById(R.id.registration_number);
-        phone_number = findViewById(R.id.registration_number);
+        phone_number = findViewById(R.id.phone_number);
         basic_adress = findViewById(R.id.basic_adress);
         detail_adress = findViewById(R.id.detail_adress);
         cancel = findViewById(R.id.cancel);

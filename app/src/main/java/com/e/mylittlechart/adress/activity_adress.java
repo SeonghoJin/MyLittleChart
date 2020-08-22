@@ -75,7 +75,7 @@ public class activity_adress extends AppCompatActivity implements MyActivity {
         webView.getSettings().setSupportMultipleWindows(true);
         webView.addJavascriptInterface(new AndroidBridge(), "TestApp");
         webView.setWebChromeClient(new webChromeClient(this));
-        webView.loadUrl("https://test-seongho.run.goorm.io/searchAdress.php");
+        webView.loadUrl("https://seongho-test.run.goorm.io/searchAdress.php");
 
     }
 

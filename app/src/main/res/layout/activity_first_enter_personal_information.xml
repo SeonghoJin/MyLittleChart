@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
-                android:text="연락처"
+                android:text="전화번호"
                 android:textColor="#B9B9B9" />
 
             <EditText
@@ -152,7 +152,7 @@
                 android:ems="10"
                 android:hint="상세 주소"
                 android:inputType="text"
-                android:padding="3dp"
+                android:padding="6dp"
                 android:textSize="14sp" />
 
         </LinearLayout>
