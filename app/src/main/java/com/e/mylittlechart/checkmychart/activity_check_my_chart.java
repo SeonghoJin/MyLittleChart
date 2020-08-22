@@ -1,5 +1,6 @@
 package com.e.mylittlechart.checkmychart;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,8 +10,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.e.mylittlechart.R;
+import com.e.mylittlechart.database.LocalPersonalDatabase;
+import com.e.mylittlechart.example.MyActivity;
 
-public class activity_check_my_chart extends AppCompatActivity {
+public class activity_check_my_chart extends AppCompatActivity implements MyActivity {
     Button enter;
     Button cancel;
     Button enter_change_name;
@@ -21,16 +24,24 @@ public class activity_check_my_chart extends AppCompatActivity {
     TextView registation_number;
     TextView phone_number;
     TextView adress;
+    LocalPersonalDatabase localPersonalDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_my_chart);
 
+        init();
         bindingObject();
         bindingEvent();
+        settings();
     }
 
-    private void bindingObject(){
+    @Override
+    public void init() {
+        localPersonalDatabase = new LocalPersonalDatabase(getApplicationContext());
+    }
+
+    public void bindingObject(){
         name = findViewById(R.id.registration_number);
         registation_number = findViewById(R.id.registration_number);
         phone_number = findViewById(R.id.registration_number);
@@ -43,7 +54,7 @@ public class activity_check_my_chart extends AppCompatActivity {
         enter_change_registration_number = findViewById(R.id.enter_change_register_number);
     }
 
-    private void bindingEvent(){
+    public void bindingEvent(){
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,5 +90,19 @@ public class activity_check_my_chart extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void settings() {
+        name.setText(localPersonalDatabase.getName());
+        registation_number.setText(localPersonalDatabase.getRegistrationNumber());
+        adress.setText(localPersonalDatabase.getBasicAdress() + '\n' + localPersonalDatabase.getDetailedAdress());
+        phone_number.setText(localPersonalDatabase.getPhoneNumber());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        settings();
     }
 }

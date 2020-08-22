@@ -13,27 +13,34 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.e.mylittlechart.checkmychart.activity_check_my_chart;
+import com.e.mylittlechart.database.LocalPersonalDatabase;
 import com.e.mylittlechart.requestcode.MyRequestCode;
 
 public class MainActivity extends AppCompatActivity {
     Button enter_profile;
     Button enter_qrcode_generator;
     Button enter_diagnostic_information;
-
+    LocalPersonalDatabase localPersonalDatabase;
+    Boolean startActivityFlag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startLoading();
 
+        init();
         bindingObject();
         bindingEvent();
-        startAnimation();
     }
 
     private void startLoading(){
         Intent intent = new Intent(getApplicationContext(), activity_splash.class);
         startActivityForResult(intent, MyRequestCode.ACTIVITY_MAIN_SEND);
+    }
+
+    private void init(){
+        localPersonalDatabase = new LocalPersonalDatabase(getApplicationContext());
+        startActivityFlag = localPersonalDatabase.empty();
     }
 
     private void bindingObject(){
@@ -72,10 +79,12 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == MyRequestCode.ACTIVITY_MAIN_SEND){
             if(resultCode == MyRequestCode.SEND_OK_ACTIVITY_SPLASH){
-                String start_activity_flag = data.getStringExtra("result");
-                if(start_activity_flag.equals("true")){
+                if(startActivityFlag){
                     Intent intent = new Intent(getApplicationContext(), activity_first_enter_personal_information.class);
                     startActivity(intent);
+                }
+                else{
+                    startAnimation();
                 }
             }
         }

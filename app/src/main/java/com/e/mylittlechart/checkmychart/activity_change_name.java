@@ -12,7 +12,7 @@ import android.widget.EditText;
 
 import com.e.mylittlechart.R;
 
-public class activity_change_name extends AppCompatActivity {
+public class activity_change_name extends AppCompatActivity{
 
     Button cancel;
     Button save;

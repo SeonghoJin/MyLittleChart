@@ -18,4 +18,12 @@ public class MyRequestCode {
     public static final int SEND_FAIL_ACTIVITY_CHECK_MY_CHART = 210;
     public static final int ACTIVITY_CHECK_MY_CHART_SEND = 211;
 
+    public static final int SEND_OK_ACTIVITY_ADRESS= 212;
+    public static final int SEND_FAIL_ACTIVITY_ADRESS = 213;
+    public static final int ACTIVITY_ADRESS_SEND = 214;
+
+    public static final int SEND_OK_ACTIVITY_CHANGE_ADRESS= 212;
+    public static final int SEND_FAIL_ACTIVITY_CHANGE_ADRESS = 213;
+    public static final int ACTIVITY_CHANGE_ADRESS_SEND = 214;
+
 }

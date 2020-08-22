@@ -3,8 +3,10 @@ package com.e.mylittlechart;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Process;
 
 import com.e.mylittlechart.requestcode.MyRequestCode;
 
@@ -23,11 +25,10 @@ public class activity_splash extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent = new Intent();
-                intent.putExtra("result","true");
-                setResult(MyRequestCode.SEND_OK_ACTIVITY_SPLASH, intent);
+                setResult(MyRequestCode.SEND_OK_ACTIVITY_SPLASH);
                 finish();
             }
-        }, 1000);
+        }, 2000);
     }
 
     @Override
@@ -36,4 +37,13 @@ public class activity_splash extends AppCompatActivity {
         overridePendingTransition(0,0);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        moveTaskToBack(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            finishAndRemoveTask();
+        }
+        Process.killProcess(Process.myPid());
+    }
 }
