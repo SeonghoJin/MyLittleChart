@@ -112,6 +112,47 @@ public class LocalDiagnoseRecordDatabase {
         return count() > 0 ? false : true;
     }
 
+    public void update(int index, DiagnoseRecord record){
+        index++;
+        Log.d(TAG,"insert");
+        if(db == null){
+            Log.d(TAG,"insert Error");
+            throw new Error();
+        }else{
+            ArrayList<String> store = new ArrayList<String>();
+
+            if(record.getDate().length() > 0){
+                store.add(String.format("date='%s'",record.getDate()));
+            }
+            if(record.getPlace().length() > 0){
+                store.add(String.format("place='%s'",record.getPlace()));
+            }
+            if(record.getMaininjurycode().length() > 0){
+                store.add(String.format("maininjurycode='%s'",record.getMaininjurycode()));
+            }
+            if(record.getViceinjurycode().length() > 0){
+                store.add(String.format("viceinjurycode='%s'",record.getViceinjurycode()));
+            }
+            if(record.getDisease().length() > 0){
+                store.add(String.format("disease='%s'",record.getDisease()));
+            }
+            if(record.getDiagnosisclassification().length() > 0){
+                store.add(String.format("diagnosisclassification='%s'",record.getDiagnosisclassification()));
+            }
+            String retStr = "";
+            for(int i = 0; i < store.size(); i++){
+                retStr += store.get(i);
+                if(i+1 < store.size()){
+                    retStr += ',';
+                }
+            }
+
+
+            db.execSQL(String.format("update %s set %s where _id=%s", TABLENAME, retStr,index));
+
+        }
+    }
+
     public DiagnoseRecord getData(int index){
         index++;
         Log.d(TAG,"getData");

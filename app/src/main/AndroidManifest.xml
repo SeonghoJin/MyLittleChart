@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".checkdiagnosticinformation.activity_inquiry_diagnose"></activity>
+        <activity android:name=".checkdiagnosticinformation.activity_save_diagnosis_record"></activity>
+        <activity android:name=".checkdiagnosticinformation.activity_check_diagnostic_classification_rate" />
+        <activity android:name=".checkdiagnosticinformation.activity_disease_details" />
+        <activity android:name=".checkdiagnosticinformation.activity_inquiry_diagnose" />
         <activity android:name=".checkdiagnosticinformation.activity_check_my_diagnostic_information" />
         <activity android:name=".adress.activity_adress" />
         <activity android:name=".activity_generate_qrcode" />

@@ -89,10 +89,15 @@ public class MainActivity extends AppCompatActivity implements MyActivity {
             public Testable excute() {
                 if(localdiagnoseRecordDatabase.count() <= 10) {
                     DiagnoseRecord testDiagnoseRecord = new DiagnoseRecord();
-                    testDiagnoseRecord.setDate("2020/08/22");
-                    testDiagnoseRecord.setDiagnosisclassification(DiagnosisClassification.BEHAVIORAL_CORRECTION_THERAPY);
+                    testDiagnoseRecord.setDate("2020/08/22" + localdiagnoseRecordDatabase.count());
+                    testDiagnoseRecord.setDiagnosisclassification(DiagnosisClassification.NATURAL_THERAPY);
                     testDiagnoseRecord.setDisease("우한");
+                    testDiagnoseRecord.setPlace("성호집");
+                    testDiagnoseRecord.setViceinjurycode("123");
+                    testDiagnoseRecord.setMaininjurycode("123");
                     localdiagnoseRecordDatabase.insert(testDiagnoseRecord);
+                    testDiagnoseRecord.setDisease("123");
+                    localdiagnoseRecordDatabase.update(localdiagnoseRecordDatabase.count()-1, testDiagnoseRecord);
                     DiagnoseRecord testDiagnoseRecord2 = localdiagnoseRecordDatabase.getData(localdiagnoseRecordDatabase.count() - 1);
                 }
                 return this;

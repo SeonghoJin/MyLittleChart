@@ -1,12 +1,23 @@
 package com.e.mylittlechart.DiagnoseRecord;
 
-public class DiagnoseRecord {
+import java.io.Serializable;
+
+public class DiagnoseRecord implements Serializable {
+    int id;
     String date;
     String place;
     String maininjurycode;
     String viceinjurycode;
     String disease;
     String diagnosisclassification;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {
@@ -30,7 +41,21 @@ public class DiagnoseRecord {
     }
 
     public DiagnoseRecord(DiagnoseRecord diagnoseRecord){
+        date = diagnoseRecord.getDate();
+        place = diagnoseRecord.getPlace();
+        maininjurycode = diagnoseRecord.getMaininjurycode();
+        viceinjurycode = diagnoseRecord.getViceinjurycode();
+        disease = diagnoseRecord.getDisease();
+        diagnosisclassification = diagnoseRecord.getDiagnosisclassification();
+    }
 
+    public DiagnoseRecord(String date, String place, String maininjurycode, String viceinjurycode, String disease, String diagnosisclassification) {
+        this.date = date;
+        this.place = place;
+        this.maininjurycode = maininjurycode;
+        this.viceinjurycode = viceinjurycode;
+        this.disease = disease;
+        this.diagnosisclassification = diagnosisclassification;
     }
 
     public String getDate() {

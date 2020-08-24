@@ -52,12 +52,14 @@ public class activity_check_my_diagnostic_information extends AppCompatActivity 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), activity_inquiry_diagnose.class);
+                startActivity(intent);
             }
         });
         enter_diagnose_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getApplicationContext(), activity_save_diagnosis_record.class);
+                startActivity(intent);
             }
         });
     }
