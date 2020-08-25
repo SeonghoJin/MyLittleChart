@@ -60,7 +60,7 @@ public class activity_check_diagnostic_classification_rate extends AppCompatActi
         }
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        webView.loadUrl("https://seongho-test.run.goorm.io/makeChart.php");
+        webView.loadUrl("https://seongho-test.run.goorm.io/find.sickness.php?code="+maininjurycode);
 
         }
 

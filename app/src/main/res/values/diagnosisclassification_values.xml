@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="diagnosisclassification">
+        <item>한방치료</item>
+        <item>물리치료</item>
+        <item>약물치료</item>
+        <item>자연치료</item>
+        <item>행동교정치료</item>
+        <item>기타</item>
+    </string-array>
+</resources>

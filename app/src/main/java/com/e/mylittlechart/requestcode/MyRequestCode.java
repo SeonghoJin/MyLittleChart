@@ -26,4 +26,15 @@ public class MyRequestCode {
     public static final int SEND_FAIL_ACTIVITY_CHANGE_ADRESS = 213;
     public static final int ACTIVITY_CHANGE_ADRESS_SEND = 214;
 
+    public static final int SEND_OK_ACTIVITY_SAVE_DIAGNOSIS_RECORD_IN_MAIN_INJURY_CODE = 215;
+    public static final int SEND_FAIL_ACTIVITY_SAVE_DIAGNOSIS_RECORD_IN_MAIN_INJURY_CODE = 216;
+    public static final int ACTIVITY_SAVE_DIAGNOSIS_RECORD_IN_MAIN_INJURY_CODE_SEND = 217;
+
+    public static final int SEND_OK_ACTIVITY_SAVE_DIAGNOSIS_RECORD_IN_VICE_INJURY_CODE = 218;
+    public static final int SEND_FAIL_ACTIVITY_SAVE_DIAGNOSIS_RECORD_IN_VICE_INJURY_CODE = 219;
+    public static final int ACTIVITY_SAVE_DIAGNOSIS_RECORD_IN_VICE_INJURY_CODE_SEND = 220;
+
+    public static final int SEND_OK_ACTIVITY_SEARCH_SICKNESS = 221;
+    public static final int SEND_FAIL_ACTIVITY_SEARCH_SICKNESS = 222;
+    public static final int ACTIVITY_SEARCH_SICKNESS_SEND = 223;
 }
