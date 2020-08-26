@@ -77,7 +77,10 @@ public class activity_change_phone_number extends AppCompatActivity implements M
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        View focusedView = getCurrentFocus();
+        if(focusedView != null) {
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
         return true;
     }
 }

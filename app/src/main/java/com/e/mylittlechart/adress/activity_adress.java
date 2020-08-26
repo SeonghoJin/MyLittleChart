@@ -14,11 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.e.mylittlechart.R;
 import com.e.mylittlechart.example.MyActivity;
@@ -141,6 +143,8 @@ public class activity_adress extends AppCompatActivity implements MyActivity {
             return true;
 
         }
+
+
     }
 
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="#00000000">
 
 
     <LinearLayout
@@ -47,7 +47,7 @@
                 android:layout_weight="1"
                 android:gravity="center|left"
                 android:text="날짜"
-                android:textColor="#B9B9B9" />
+                android:textColor="@android:color/background_dark" />
 
             <EditText
                 android:id="@+id/date"
@@ -57,7 +57,10 @@
                 android:layout_weight="2"
                 android:background="@drawable/bottomline"
                 android:ems="1"
+                android:hint="날짜를 입력해주세요."
                 android:inputType="date"
+                android:padding="5dp"
+                android:paddingLeft="30dp"
                 android:text="" />
         </LinearLayout>
 
@@ -76,7 +79,7 @@
                 android:layout_weight="1"
                 android:gravity="center|left"
                 android:text="장소"
-                android:textColor="#B9B9B9" />
+                android:textColor="@android:color/background_dark" />
 
             <EditText
                 android:id="@+id/place"
@@ -86,7 +89,10 @@
                 android:layout_weight="2"
                 android:background="@drawable/bottomline"
                 android:ems="1"
-                android:inputType="text" />
+                android:hint="장소를 입력해주세요."
+                android:inputType="text"
+                android:padding="5dp"
+                android:paddingLeft="30dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -104,7 +110,7 @@
                 android:layout_weight="1"
                 android:gravity="center|left"
                 android:text="주상병코드"
-                android:textColor="#B9B9B9" />
+                android:textColor="@android:color/background_dark" />
 
             <EditText
                 android:id="@+id/maininjurycode"
@@ -114,7 +120,10 @@
                 android:layout_weight="2"
                 android:background="@drawable/bottomline"
                 android:ems="1"
-                android:inputType="text" />
+                android:hint="코드를 입력해주세요."
+                android:inputType="text"
+                android:padding="5dp"
+                android:paddingLeft="30dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -132,7 +141,7 @@
                 android:layout_weight="1"
                 android:gravity="center|left"
                 android:text="부상병코드"
-                android:textColor="#B9B9B9" />
+                android:textColor="@android:color/background_dark" />
 
             <EditText
                 android:id="@+id/viceinjurycode"
@@ -142,7 +151,10 @@
                 android:layout_weight="2"
                 android:background="@drawable/bottomline"
                 android:ems="1"
-                android:inputType="text" />
+                android:hint="코드를 입력해주세요."
+                android:inputType="text"
+                android:padding="3dp"
+                android:paddingLeft="30dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -160,7 +172,7 @@
                 android:layout_weight="1"
                 android:gravity="center|left"
                 android:text="병"
-                android:textColor="#B9B9B9" />
+                android:textColor="@android:color/background_dark" />
 
             <EditText
                 android:id="@+id/disease"
@@ -171,9 +183,15 @@
                 android:background="@drawable/bottomline"
                 android:breakStrategy="balanced"
                 android:ems="1"
+                android:hint="병명을 입력해주세요."
                 android:inputType="textMultiLine"
                 android:maxLines="4"
-                android:minLines="1" />
+                android:minLines="1"
+                android:padding="0dp"
+                android:paddingLeft="30dp"
+                android:paddingTop="0dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -191,7 +209,7 @@
                 android:layout_weight="1"
                 android:gravity="center|left"
                 android:text="진단 분류"
-                android:textColor="#B9B9B9" />
+                android:textColor="@android:color/background_dark" />
 
             <Spinner
                 android:id="@+id/diseaseclassification"
@@ -201,6 +219,8 @@
                 android:layout_weight="2"
                 android:background="@drawable/bottomline"
                 android:entries="@array/diagnosisclassification"
+                android:gravity="left"
+                android:padding="0dp"
                 android:text="진단분류 선택" />
         </LinearLayout>
 
@@ -233,5 +253,16 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.097" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,7 +54,8 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="주민등록번호" />
+                    android:text="주민등록번호"
+                    android:textColor="@android:color/background_dark" />
 
                 <EditText
                     android:id="@+id/registration_number"

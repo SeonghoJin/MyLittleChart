@@ -139,10 +139,12 @@ public class activity_first_enter_personal_information extends AppCompatActivity
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        View focusedView = getCurrentFocus();
+        if(focusedView != null) {
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
         return true;
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();

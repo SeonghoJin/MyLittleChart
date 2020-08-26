@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="주소"
-                android:textColor="#B9B9B9" />
+                android:textColor="@android:color/background_dark" />
 
             <EditText
                 android:id="@+id/basic_adress"
