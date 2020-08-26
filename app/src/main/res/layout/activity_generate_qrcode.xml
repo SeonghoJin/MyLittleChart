@@ -39,14 +39,14 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/cancel"
+        android:id="@+id/download"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="15dp"
         android:layout_weight="5"
-        android:background="#00000000"
+        android:background="@drawable/iconfinder_download_2561424"
         android:gravity="center"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -63,6 +63,5 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

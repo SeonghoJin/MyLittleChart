@@ -2,8 +2,11 @@ package com.e.mylittlechart;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +28,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity implements MyActivity {
     Button enter_profile;
     Button enter_qrcode_generator;
+    Button enter_qrcode_reader;
     Button enter_diagnostic_information;
     LocalPersonalDatabase localPersonalDatabase;
     LocalDiagnoseRecordDatabase localdiagnoseRecordDatabase;
@@ -34,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements MyActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startLoading();
-
         init();
         bindingObject();
         bindingEvent();
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements MyActivity {
         enter_profile = findViewById(R.id.enter_profile);
         enter_qrcode_generator = findViewById(R.id.enter_qrcode_generator);
         enter_diagnostic_information = findViewById(R.id.enter_diagnostic_information);
+        enter_qrcode_reader = findViewById(R.id.enter_qrcode_reader);
     }
 
     public void bindingEvent(){
@@ -80,6 +84,13 @@ public class MainActivity extends AppCompatActivity implements MyActivity {
                 startActivity(intent);
             }
         });
+        enter_qrcode_reader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), activity_read_qrCode.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -88,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements MyActivity {
 
     private void startAnimation(){
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.alpha);
-
+        enter_qrcode_reader.startAnimation(animation);
         enter_profile.startAnimation(animation);
         enter_qrcode_generator.startAnimation(animation);
         enter_diagnostic_information.startAnimation(animation);

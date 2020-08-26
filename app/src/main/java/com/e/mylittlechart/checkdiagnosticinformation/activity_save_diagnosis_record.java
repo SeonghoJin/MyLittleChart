@@ -206,6 +206,10 @@ public class activity_save_diagnosis_record extends AppCompatActivity implements
                     public void onResponse(String response) {
                         if(response.equals("-1")){
                             Saving = false;
+                            if(task.getStatus() == AsyncTask.Status.RUNNING){
+                                task.cancel(true);
+                                loading.setText("");
+                            }
                             Toast.makeText(getApplicationContext(), "기록하지 못했습니다. 다시 시도해주세요.", Toast.LENGTH_LONG).show();
                         }
                         else {
@@ -223,6 +227,7 @@ public class activity_save_diagnosis_record extends AppCompatActivity implements
                                     Toast.makeText(getApplicationContext(), "기록하였습니다.", Toast.LENGTH_LONG).show();
                                     if(task.getStatus() == AsyncTask.Status.RUNNING){
                                         task.cancel(true);
+                                        loading.setText("");
                                     }
                                     finish();
                                 }
@@ -234,6 +239,10 @@ public class activity_save_diagnosis_record extends AppCompatActivity implements
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Saving = false;
+                        if(task.getStatus() == AsyncTask.Status.RUNNING){
+                            task.cancel(true);
+                            loading.setText("");
+                        }
                         Toast.makeText(getApplicationContext(), "기록하지 못했습니다. 다시 시도해주세요.", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -311,50 +320,8 @@ public class activity_save_diagnosis_record extends AppCompatActivity implements
         @Override
         protected void onCancelled() {
             super.onCancelled();
+            loading.setText("");
         }
     };
-            /*extends AsyncTask<Void, Void, String> {
-        TextView testView;
 
-        public LoadingTask(TextView testView) {
-            this.testView = testView;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            testView.setText("로딩중");
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            if(s == "true"){
-                testView.setText("로딩완료");
-
-            }
-            else{
-                testView.setText("실패");
-            }
-            super.onPostExecute(s);
-
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
-        }
-
-        @Override
-        protected String doInBackground(Void... voids) {
-
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                return "false";
-            }
-
-            return "true";
-        }
-    }*/
 }
