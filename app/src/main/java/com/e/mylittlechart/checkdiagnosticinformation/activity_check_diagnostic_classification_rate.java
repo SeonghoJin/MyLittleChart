@@ -54,13 +54,14 @@ public class activity_check_diagnostic_classification_rate extends AppCompatActi
 
     @Override
     public void settings() {
+        String BaseURL = "https://seongho-test.run.goorm.io/visualize/chart.php?main_injury_code=%s&vice_injury_code=%s";
         if(maininjurycode.length() == 0 && viceinjurycode.length() == 0){
             Toast.makeText(getApplicationContext(),"주상병코드와 부상병코드가 없는 진료기록입니다",Toast.LENGTH_LONG).show();
             finish();
         }
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        webView.loadUrl("https://seongho-test.run.goorm.io/find.sickness.php?code="+maininjurycode);
+        webView.loadUrl(String.format(BaseURL,maininjurycode, viceinjurycode));
 
         }
 

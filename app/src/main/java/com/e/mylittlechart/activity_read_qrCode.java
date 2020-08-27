@@ -85,7 +85,7 @@ public class activity_read_qrCode extends AppCompatActivity {
 
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setTextSize(18f);
-        canvas.drawText("진료 접수증",pageInfo.getPageWidth()/2,50,paint);
+        canvas.drawText("진료 접수증",pageInfo.getPageWidth()/2.0f,50,paint);
 
         paint.setTextAlign(Paint.Align.LEFT);
         paint.setTextSize(16f);
@@ -94,29 +94,31 @@ public class activity_read_qrCode extends AppCompatActivity {
         int startYPosition = 100;
 
         for(int i = 0; i < 4; i++){
-            canvas.drawText(informationArray[i],startXPosition,startYPosition+(i ==3 ? 20 : 0),paint);
+            canvas.drawText(informationArray[i],startXPosition,startYPosition+(i ==3 ? 40 : 0),paint);
 
             if(i == 3){
-                String str[] = new String[3];
+                String str[] = new String[5];
                 String main = personalValues[3];
                 int len = main.length()-1;
                 int startx = 0;
-                for(int j = 0; j < 3; j++){
-                    str[j] = personalValues[3].substring(startx < len? startx : len, startx+19 < len ? startx+19 : len);
-                    startx+=19;
+                for(int j = 0; j < 5; j++){
+                    str[j] = personalValues[3].substring(startx < len? startx : len, startx+12 < len ? startx+12 : len);
+                    startx+=12;
                 }
                 canvas.drawText(str[0], 113, startYPosition, paint);
                 canvas.drawText(str[1], 113, startYPosition+20, paint);
                 canvas.drawText(str[2], 113, startYPosition+40, paint);
+                canvas.drawText(str[3], 113, startYPosition+60, paint);
+                canvas.drawText(str[4], 113, startYPosition+80, paint);
 
             }
             else {
                 canvas.drawText(personalValues[i], 113, startYPosition, paint);
             }
-            canvas.drawLine(startXPosition,startYPosition+3 + (i == 3 ? 40 : 0),endXPosition,startYPosition+3+ (i == 3 ? 40 : 0),paint);
+            canvas.drawLine(startXPosition,startYPosition+3 + (i == 3 ? 100 : 0),endXPosition,startYPosition+3+ (i == 3 ? 100 : 0),paint);
             startYPosition+=20;
         }
-        canvas.drawLine(110,80,110,210,paint);
+        canvas.drawLine(110,80,110,270,paint);
 
         pdf.finishPage(page);
         File file = new File(Environment.getExternalStorageDirectory(),"/person.pdf");
